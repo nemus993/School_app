@@ -1,0 +1,27 @@
+<h2>
+  <%= @school.title %>
+</h2></br>
+
+<table border="1">
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Gender</th>
+  <% @school.pupils.each do |pupil|%>
+  <tr>
+    <td><%= pupil.first_name %></td>
+    <td><%= pupil.last_name%></td>
+    <td><%= pupil.gender%></td>
+  </tr>
+  <%end%>
+</table>
+<table border="1">
+<% for i in 1..3 do %>
+<tr>
+<th>Class<%= i %></th>
+  <% @school.pupils.all.select{|n| n.grade == i }.each do |g| %>
+    <td><%= g.first_name%> <%= g.last_name %></td>
+  <% end %>
+</tr>
+<% end %>
+</table>
+<%= link_to 'Back', schools_path %>
