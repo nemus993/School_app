@@ -19,9 +19,12 @@ class SchoolsController < ApplicationController
       render :action => "new"
     end
   end
-
+  def sort
+    @school = School.find(params[:id])
+    @school.sort_pupils
+  end
   private
   def school_params
-    params.require(:school).permit(:title)
+    params.require(:school).permit(:title, :num_of_grades)
   end
 end

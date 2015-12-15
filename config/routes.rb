@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
 
   resources :schools
+  get 'schools/:id/sort' =>  'schools#sort', as: :school_sort
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

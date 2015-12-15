@@ -1,5 +1,5 @@
 <h2>
-  <%= @school.title %>
+  <%= @school.title %> has <%= @school.num_of_grades %>classes.
 </h2></br>
 
 <table border="1">
@@ -14,14 +14,6 @@
   </tr>
   <%end%>
 </table>
-<table border="1">
-<% for i in 1..3 do %>
-<tr>
-<th>Class<%= i %></th>
-  <% @school.pupils.all.select{|n| n.grade == i }.each do |g| %>
-    <td><%= g.first_name%> <%= g.last_name %></td>
-  <% end %>
-</tr>
-<% end %>
-</table>
+<%= link_to 'Sort Pupils', school_sort_path %>
+
 <%= link_to 'Back', schools_path %>

@@ -1,0 +1,10 @@
+<table border="1">
+<% for i in 1..@school.num_of_grades do %>
+<tr>
+<th>Class<%= i %></th>
+  <% @school.pupils.all.select{|n| n.grade == i }.each do |g| %>
+    <td><%= g.first_name%> <%= g.last_name %></td>
+  <% end %>
+</tr>
+<% end %>
+</table>

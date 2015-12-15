@@ -4,7 +4,6 @@ class School < ActiveRecord::Base
   belongs_to :user
   has_many :pupils
 
-  private
   def generate_pupil
     @names = %w{Bojan Nemanja Stefan Ilija Dragan Boba Goci Ipce}
     @surnames = %w{Pleb Milic Dragic Radic Gut Sobic}
@@ -16,20 +15,17 @@ class School < ActiveRecord::Base
       @pupil.gender = @sex.sample
       @pupil.save
     end
-    sort_pupils
   end
     def sort_pupils
       @pupils = pupils.all
       #debugger
       @males = @pupils.select{|p| p.gender == 'M'}
       @females = @pupils.select{|k| k.gender == 'F'}
-      @males_div = @males.each_slice(@males.length/3).to_a
-        @males_div[0].each{|m| m.grade = 1; m.save}
-        @males_div[1].each{|m| m.grade = 2; m.save}
-        @males_div[2].each{|m| m.grade = 3; m.save}
-      @females_div = @females.each_slice(@females.length/3).to_a
-        @females_div[0].each{|m| m.grade = 1; m.save}
-        @females_div[1].each{|m| m.grade = 2; m.save}
-        @females_div[2].each{|m| m.grade = 3; m.save}
+      @males_div = @males.each_slice(@males.length/num_of_grades).to_a
+      @females_div = @females.each_slice(@females.length/num_of_grades).to_a
+      for i in 0..num_of_grades-1 do
+        @males_div[i].each{|m| m.grade = i+1; m.save}
+        @females_div[i].each{|m| m.grade = i+1; m.save}
+      end
     end
 end
