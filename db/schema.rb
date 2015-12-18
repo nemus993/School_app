@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215095043) do
+ActiveRecord::Schema.define(version: 20151216185749) do
 
   create_table "pupils", force: :cascade do |t|
     t.string   "first_name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151215095043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "school_id"
+    t.boolean  "special"
   end
 
   add_index "pupils", ["school_id"], name: "index_pupils_on_school_id"

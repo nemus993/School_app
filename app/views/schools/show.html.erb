@@ -1,19 +1,9 @@
 <h2>
   <%= @school.title %> has <%= @school.num_of_grades %>classes.
 </h2></br>
-
-<table border="1">
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Gender</th>
-  <% @school.pupils.each do |pupil|%>
-  <tr>
-    <td><%= pupil.first_name %></td>
-    <td><%= pupil.last_name%></td>
-    <td><%= pupil.gender%></td>
-  </tr>
-  <%end%>
-</table>
-<%= link_to 'Sort Pupils', school_sort_path %>
-
+<body>
+ <%= render "generate" %>
+</body>
+<span id="generate"><%= link_to 'Generate pupils', method: "post", action: "generate", :remote => true, class: "generator" %></span>
+<%= link_to 'Sort pupils', sort_school_path%>
 <%= link_to 'Back', schools_path %>

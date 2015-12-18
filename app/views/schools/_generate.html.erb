@@ -1,0 +1,12 @@
+<table border="1">
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Gender</th>
+  <% @school.pupils.each do |pupil|%>
+  <tr>
+    <td><%= pupil.first_name %></td>
+    <td><%= pupil.last_name%></td>
+    <td><%= pupil.gender%></td>
+  </tr>
+  <%end%>
+</table>

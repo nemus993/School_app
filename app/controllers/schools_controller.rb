@@ -10,6 +10,10 @@ class SchoolsController < ApplicationController
   end
   def show
     @school = School.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js {render :layout => "fadein"}
+    end
   end
   def create
     @school = current_user.schools.build(school_params)
@@ -19,9 +23,14 @@ class SchoolsController < ApplicationController
       render :action => "new"
     end
   end
+def generate
+    @school = School.find(params[:id])
+    @school.generate_pupil
+  end
   def sort
     @school = School.find(params[:id])
     @school.sort_pupils
+    @pupils = @school.pupils.all
   end
   private
   def school_params

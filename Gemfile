@@ -28,19 +28,24 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'cucumber'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+group :test do
+  gem 'guard-rspec'
+  gem 'cucumber'
+  gem 'launchy'
 end
