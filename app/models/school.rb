@@ -2,7 +2,9 @@ class School < ActiveRecord::Base
 
 
   belongs_to :user
-  has_many :pupils
+  has_many :pupils, dependent: :destroy
+
+  validates :num_of_grades, presence: true
 
   def generate_pupil
     sex = %w{M F}

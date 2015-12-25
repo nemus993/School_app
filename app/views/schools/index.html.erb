@@ -1,7 +1,7 @@
 
 <h1>Listing Schools</h1>
     <% @schools.each do |school| %>
-      <p><%= school.title %></p></br>
+      <p><%= school.title %></p>
       <p><%= link_to "Details", school_path(school.id) %></p>
     <% end %>
 </br>

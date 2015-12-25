@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
 
   resources :schools do
+      resources :pupils
       get 'sort', on: :member
       post 'generate', on: :member
       get 'generate', on: :member
